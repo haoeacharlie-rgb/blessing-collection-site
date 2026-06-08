@@ -8,25 +8,20 @@ let supabaseBrowserClient:
   | ReturnType<typeof createClient<Database>>
   | undefined;
 
-function getRequiredPublicEnv(
-  name: "NEXT_PUBLIC_SUPABASE_URL" | "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-) {
-  const value = process.env[name];
+const publicSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const publicSupabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  if (!value) {
+export function getSupabaseBrowserClient() {
+  if (!publicSupabaseUrl || !publicSupabaseAnonKey) {
     throw new Error(
       "还没有配置 Supabase。请先补全站点环境变量后再继续提交祝福。",
     );
   }
 
-  return value;
-}
-
-export function getSupabaseBrowserClient() {
   if (!supabaseBrowserClient) {
     supabaseBrowserClient = createClient(
-      getRequiredPublicEnv("NEXT_PUBLIC_SUPABASE_URL"),
-      getRequiredPublicEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
+      publicSupabaseUrl,
+      publicSupabaseAnonKey,
       {
         auth: {
           persistSession: false,
