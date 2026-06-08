@@ -1,5 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
+import type { Database } from "@/types/supabase";
+
 type SupabaseEnvName =
   | "NEXT_PUBLIC_SUPABASE_URL"
   | "NEXT_PUBLIC_SUPABASE_ANON_KEY";
@@ -26,7 +28,7 @@ export function getSupabaseConfigErrorMessage() {
 }
 
 export function getSupabaseServerClient() {
-  return createClient(
+  return createClient<Database>(
     getRequiredEnv("NEXT_PUBLIC_SUPABASE_URL"),
     getRequiredEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
     {

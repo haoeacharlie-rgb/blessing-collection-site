@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 
+import { submitBlessing } from "@/lib/blessings/client";
 import { BirdIllustration } from "@/components/BirdIllustration";
 import {
   countBlessingCharacters,
@@ -38,28 +39,8 @@ export function BlessingForm({ onBack, onSuccess }: BlessingFormProps) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/blessings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(validation.value),
-      });
-
-      const data = (await response.json()) as {
-        error?: string;
-        count?: number | null;
-        submittedName?: string | null;
-      };
-
-      if (!response.ok) {
-        throw new Error(data.error ?? "蓝鸟暂时飞远了一点，请稍后再试。");
-      }
-
-      onSuccess({
-        totalCount: data.count ?? null,
-        submittedName: data.submittedName ?? undefined,
-      });
+      const result = await submitBlessing(validation.value);
+      onSuccess(result);
     } catch (submitError) {
       setError(
         submitError instanceof Error

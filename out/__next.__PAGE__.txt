@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[5107,["/blessing-collection-site/_next/static/chunks/158myu8e_yme3.js","/blessing-collection-site/_next/static/chunks/2wsxyfuk18_3_.js"],"CollectionExperience"]
+3:I[97367,["/blessing-collection-site/_next/static/chunks/158myu8e_yme3.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"relative min-h-screen overflow-hidden px-4 py-8 sm:px-6","children":["$","div",null,{"className":"mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-md items-center justify-center","children":["$","$L2",null,{}]}]}],[["$","script","script-0",{"src":"/blessing-collection-site/_next/static/chunks/2wsxyfuk18_3_.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZtU7MaNfmXgKYYBpRN86b"}
+5:null
